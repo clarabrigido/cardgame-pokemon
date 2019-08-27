@@ -6,7 +6,7 @@
   background-size: cover;
 	margin: 0;
   padding: 0;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .header__container{
@@ -30,7 +30,6 @@
 
 .form{
   font-size: 25px;
-
 }
 
 .start-btn{
@@ -41,14 +40,11 @@
   margin: 20px;
   background-color: grey;
   color: white;
-  // background-color:#e93f34 ;
-  // color:#58585a;
   border: solid 2px black;
   font-family: 'Roboto', sans-serif;
 }
 
 .container__form{
-  // background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +53,6 @@
 }
 
 .container__list{
-  //background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,15 +65,99 @@
 }
 
 .list__item{
-  background-color: white;
   width: 160px;
   height: 195px;
-  border-radius: 10px;
-  border: solid 1px black;
-  list-style: none;
   margin:10px;
+  list-style: none;
+  cursor: pointer;
 }
 
 .image{
-border-radius: 10px;
+  border-radius: 10px;
+  border: solid 1px black;
+  background-color: white;
+}
+
+.card{
+  position: relative;
+  transition: transform 0.4s ease 0s;
+  animation-fill-mode: none;
+  animation: turnStart 1s 1;
+}
+
+@keyframes turnStart {
+
+    from {
+      transform: rotateY( 180deg);
+    }
+
+    to {
+      transform: rotateY( 0deg);
+    }
+}
+
+
+// Normal State
+.card .front {
+ display: none;
+ position: absolute;
+ transform: rotateY(90deg);
+}
+
+.card .back {
+  display: block;
+  position: absolute;
+}
+
+// Selected State
+.card.selected .front {
+  display: block;
+  //transform: rotateY(180deg);
+  animation: flipShowFront 0.25s 0.25s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+}
+
+.card.selected .back {
+  animation: flipHideBack 0.25s 0s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+}
+
+@keyframes flipHideBack {
+  from {
+  }
+  to {
+    transform: rotateY(90deg);
+    transform-style: preserve-3d;
+    display: none;
+  }
+}
+
+@keyframes flipShowFront {
+  from {
+
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+
+// Matched State
+.matched::before{
+  content: "✅";
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card.matched .front {
+  display: block;
+  transform: rotateY(0);
+}
+
+.card.matched .back {
+  display: none;
 }
