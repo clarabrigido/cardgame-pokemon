@@ -24,12 +24,17 @@
   font-size: 55px;
   display: flex;
   justify-content: center;
-  margin: 40px 20px 10px 40px;
+  margin: 40px 20px 10px 20px;
   padding: 0;
 }
 
 .form{
   font-size: 25px;
+}
+
+.label__form {
+  font-family: 'Roboto';
+  cursor: pointer;
 }
 
 .start-btn{
@@ -38,7 +43,7 @@
   font-size: 20px;
   border-radius: 20px;
   margin: 20px;
-  background-color: grey;
+  background-color: #30d9c4;
   color: white;
   border: solid 2px black;
   font-family: 'Roboto', sans-serif;
@@ -60,8 +65,12 @@
 
 .list{
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  max-width: 800px;
   margin:10px;
+  padding: 0;
 }
 
 .list__item{
@@ -136,7 +145,6 @@
 
 @keyframes flipShowFront {
   from {
-
   }
   to {
     transform: rotateY(0deg);
