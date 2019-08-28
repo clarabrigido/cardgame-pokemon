@@ -73,18 +73,18 @@ function handleRetrieveCardClick(event){
     .then(data => {
       // Baraja
       let deck = new Array(numberOfCards);
-      // Posición Ya Asignada?
+      // Posición ya Asignada?
       let assigned = new Array(numberOfCards);
 
       // Para cada carta ...
       for(const cardObject of data){
-        // Buscamos un hueco aleatorio libre
+        // Busca hueco aleatorio libre
         while(true){
           const randomPosition = Math.floor(Math.random() * numberOfCards);
           if(assigned[randomPosition] !== true) {
             deck[randomPosition] = cardObject;
             assigned[randomPosition] = true; // Hueco asignado
-            break; // Podemos salir
+            break; // Salir del bucle
           }
         }
       }
