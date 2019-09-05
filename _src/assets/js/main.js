@@ -5,11 +5,11 @@ let inputElement;
 const cardsListElement = document.querySelector('.list');
 const cardBackElement = document.querySelector('.back__card');
 let cards = [];
-// TODO: Variable contador de clicks
+// TO DO: Variable contador de clicks
 const counterElement = document.querySelector('.counter');
 let counter = 0;
 
-// TODO: Variable clicks
+// TO DO: Variable clicks
 
 //Timer
 let n = 0;
@@ -122,7 +122,7 @@ function handleRetrieveCardClick(event){
 
       audioDeal.play();
 
-      // TODO: Reiniciar el contador de clicks
+      // TO DO: Reiniciar el contador de clicks
       // function handleResetCounter(event) {
       // counter = 0;
       // resetInnerHTML(counterElement);
