@@ -169,3 +169,56 @@
 .card.matched .back {
   display: none;
 }
+
+
+// Contador
+// .wrap{
+//   display:block;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.set{
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  background-color: #434343;
+  border-radius: 10px;
+  width: 180px;
+  height: 300px;
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  text-align: center;
+  padding: 10px;
+}
+.counter{
+  margin: 0;
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: black;
+  font-size:50px;
+  color: red;
+  // position: absolute;
+  // right: 100px;
+  // bottom: 60px;
+  text-align: center;
+}
+
+.timer{
+  margin: 0;
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: orangered;
+  font-size:50px;
+  color:#434343;
+  // position: absolute;
+  // right: 100px;
+  // bottom: 150px;
+  text-align: center;
+}
+
+.set-title{
+  margin: 10px;
+}

@@ -5,6 +5,15 @@ let inputElement;
 const cardsListElement = document.querySelector('.list');
 const cardBackElement = document.querySelector('.back__card');
 let cards = [];
+// TODO: Variable contador de clicks
+const counterElement = document.querySelector('.counter');
+let counter = 0;
+
+// TODO: Variable clicks
+
+//Timer
+let n = 0;
+const timerElement = document.querySelector('.timer');
 
 // Media
 const audioSelected = document.querySelector('.audio-selected');
@@ -14,6 +23,9 @@ const audioDeal = document.querySelector('.audio-deal');
 const audioVictory = document.querySelector('.audio-victory');
 
 function handleSelectCardClick(event) {
+  // Incrementar el número de clicks
+  counter++;
+  // Actualizar el contador
   const cardElement = event.currentTarget.parentElement;
   cardElement.classList.toggle('selected');
 
@@ -53,6 +65,7 @@ function handleSelectCardClick(event) {
   } else {
     console.log('Imposible!');
   }
+  counterElement.innerHTML = counter;
 }
 
 function handleUnselectCardClick(event) {
@@ -65,6 +78,12 @@ function handleUnselectCardClick(event) {
 }
 
 function handleRetrieveCardClick(event){
+
+   window.setInterval(function(){
+    timer.innerHTML = n;
+    n++;
+  },1000);
+
   inputElement = document.querySelector('.input__form:checked');
   const numberOfCards = parseInt(inputElement.value);
   const api = `https://raw.githubusercontent.com/Adalab/cards-data/master/${numberOfCards}.json`;
@@ -103,6 +122,21 @@ function handleRetrieveCardClick(event){
 
       audioDeal.play();
 
+      // TODO: Reiniciar el contador de clicks
+      // function handleResetCounter(event) {
+      // counter = 0;
+      // resetInnerHTML(counterElement);
+      // }
+
+      function resetInnerHTML(element) {
+        element.innerHTML = '0';
+      }
+
+      function handleResetCounter(event) {
+        counter = 0;
+        resetInnerHTML(counterElement);
+        startBtnElement.addEventListener('click', handleResetCounter);
+      }
       const cardBackElementList = document.querySelectorAll('.card .back');
       for(const cardBackElement of cardBackElementList) {
         cardBackElement.addEventListener('click', handleSelectCardClick);
@@ -117,6 +151,8 @@ function handleRetrieveCardClick(event){
 }
 startBtnElement.addEventListener('click', handleRetrieveCardClick);
 
+
+
 // Marcar la opción predeterminada
 const numberOfCards = localStorage.getItem('numberOfCards');
 let defaultOptionElement;
@@ -124,3 +160,7 @@ if(numberOfCards != null) {
   defaultOptionElement = document.querySelector(`#input-${numberOfCards}`);
   defaultOptionElement.setAttribute('checked', true);
 }
+
+
+
+
