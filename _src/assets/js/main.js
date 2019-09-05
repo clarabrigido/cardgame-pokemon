@@ -1,11 +1,12 @@
 'use strict';
-
+// Element
 const startBtnElement = document.querySelector('.start-btn');
 let inputElement;
 const cardsListElement = document.querySelector('.list');
 const cardBackElement = document.querySelector('.back__card');
 let cards = [];
 
+// Media
 const audioSelected = document.querySelector('.audio-selected');
 const audioMatched = document.querySelector('.audio-matched');
 const audioMissed = document.querySelector('.audio-missed');
