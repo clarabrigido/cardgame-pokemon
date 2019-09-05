@@ -178,47 +178,25 @@
 //   align-items: center;
 // }
 
-.set{
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px;
-  background-color: #434343;
-  border-radius: 10px;
-  width: 180px;
-  height: 300px;
-  position: absolute;
+.scoreboard {
+  position: fixed;
+  top: 50px;
   right: 50px;
-  bottom: 50px;
-  text-align: center;
+  width: 150px;
+
+  background-color: #30d9c4;
+  color: black;
+  border: solid 2px black;
   padding: 10px;
-}
-.counter{
-  margin: 0;
-  width: 100px;
-  height: 80px;
   border-radius: 10px;
-  background-color: black;
-  font-size:50px;
-  color: red;
-  // position: absolute;
-  // right: 100px;
-  // bottom: 60px;
-  text-align: center;
+
+  font-family: 'Roboto', sans-serif;
 }
 
-.timer{
-  margin: 0;
-  width: 100px;
-  height: 80px;
-  border-radius: 10px;
-  background-color: orangered;
-  font-size:50px;
-  color:#434343;
-  // position: absolute;
-  // right: 100px;
-  // bottom: 150px;
-  text-align: center;
+.sb-title{
+  font-size:20px;
 }
 
-.set-title{
-  margin: 10px;
+.sb-value{
+  font-size:25px;
 }

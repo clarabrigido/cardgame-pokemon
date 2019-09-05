@@ -5,15 +5,10 @@ let inputElement;
 const cardsListElement = document.querySelector('.list');
 const cardBackElement = document.querySelector('.back__card');
 let cards = [];
-// TO DO: Variable contador de clicks
 const counterElement = document.querySelector('.counter');
 let counter = 0;
-
-// TO DO: Variable clicks
-
-//Timer
-let n = 0;
 const timerElement = document.querySelector('.timer');
+let timer = 0;
 
 // Media
 const audioSelected = document.querySelector('.audio-selected');
@@ -79,9 +74,9 @@ function handleUnselectCardClick(event) {
 
 function handleRetrieveCardClick(event){
 
-   window.setInterval(function(){
-    timer.innerHTML = n;
-    n++;
+  window.setInterval(function(){
+    timer++;
+    timerElement.innerHTML = timer;
   },1000);
 
   inputElement = document.querySelector('.input__form:checked');
@@ -117,36 +112,26 @@ function handleRetrieveCardClick(event){
         cardHTML += `<img class="image back" src="https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB" alt"Pokémon ?" height="195" width="160">`;
         cardHTML += `</li>`;
       }
-
       cardsListElement.innerHTML = cardHTML;
 
-      audioDeal.play();
-
-      // TO DO: Reiniciar el contador de clicks
-      // function handleResetCounter(event) {
-      // counter = 0;
-      // resetInnerHTML(counterElement);
-      // }
-
-      function resetInnerHTML(element) {
-        element.innerHTML = '0';
-      }
-
-      function handleResetCounter(event) {
-        counter = 0;
-        resetInnerHTML(counterElement);
-        startBtnElement.addEventListener('click', handleResetCounter);
-      }
+      // Asignar handlers
       const cardBackElementList = document.querySelectorAll('.card .back');
       for(const cardBackElement of cardBackElementList) {
         cardBackElement.addEventListener('click', handleSelectCardClick);
       }
-
       const cardFrontElementList = document.querySelectorAll('.card .front');
       for(const cardFrontElement of cardFrontElementList) {
         cardFrontElement.addEventListener('click', handleUnselectCardClick);
       }
 
+      // Resetear contador y cronómetro
+      counter = 0;
+      counterElement.innerHTML = '0';
+      timer = 0;
+      timerElement.innerHTML = '0';
+
+      // Reproducir sonido de baraja
+      audioDeal.play();
     });
 }
 startBtnElement.addEventListener('click', handleRetrieveCardClick);
