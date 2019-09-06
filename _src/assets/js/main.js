@@ -5,6 +5,11 @@ let inputElement;
 const cardsListElement = document.querySelector('.list');
 const cardBackElement = document.querySelector('.back__card');
 let cards = [];
+const counterElement = document.querySelector('.counter');
+let counter = 0;
+const timerElement = document.querySelector('.timer');
+let timer = 0;
+let timeCounter;
 
 // Media
 const audioSelected = document.querySelector('.audio-selected');
@@ -14,6 +19,9 @@ const audioDeal = document.querySelector('.audio-deal');
 const audioVictory = document.querySelector('.audio-victory');
 
 function handleSelectCardClick(event) {
+  // Incrementar el número de clicks
+  counter++;
+  // Actualizar el contador
   const cardElement = event.currentTarget.parentElement;
   cardElement.classList.toggle('selected');
 
@@ -32,7 +40,9 @@ function handleSelectCardClick(event) {
       const matchedCardElementList = document.querySelectorAll('.matched');
       if(cardElementList.length === matchedCardElementList.length) {
         // Todas las parejas han sido encontradas.
+        clearInterval(timeCounter);
         audioVictory.play();
+
       } else {
         // Nueva pareja encontrada.
         audioMatched.play();
@@ -53,6 +63,7 @@ function handleSelectCardClick(event) {
   } else {
     console.log('Imposible!');
   }
+  counterElement.innerHTML = counter;
 }
 
 function handleUnselectCardClick(event) {
@@ -65,6 +76,12 @@ function handleUnselectCardClick(event) {
 }
 
 function handleRetrieveCardClick(event){
+
+  timeCounter = setInterval(function(){
+    timer++;
+    timerElement.innerHTML = timer;
+  },1000);
+
   inputElement = document.querySelector('.input__form:checked');
   const numberOfCards = parseInt(inputElement.value);
   const api = `https://raw.githubusercontent.com/Adalab/cards-data/master/${numberOfCards}.json`;
@@ -98,24 +115,30 @@ function handleRetrieveCardClick(event){
         cardHTML += `<img class="image back" src="https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB" alt"Pokémon ?" height="195" width="160">`;
         cardHTML += `</li>`;
       }
-
       cardsListElement.innerHTML = cardHTML;
 
-      audioDeal.play();
-
+      // Asignar handlers
       const cardBackElementList = document.querySelectorAll('.card .back');
       for(const cardBackElement of cardBackElementList) {
         cardBackElement.addEventListener('click', handleSelectCardClick);
       }
-
       const cardFrontElementList = document.querySelectorAll('.card .front');
       for(const cardFrontElement of cardFrontElementList) {
         cardFrontElement.addEventListener('click', handleUnselectCardClick);
       }
 
+      // Resetear contador y cronómetro
+      counter = 0;
+      counterElement.innerHTML = '0';
+      timer = 0;
+      timerElement.innerHTML = '0';
+
+      // Reproducir sonido de baraja
+      audioDeal.play();
     });
 }
 startBtnElement.addEventListener('click', handleRetrieveCardClick);
+
 
 // Marcar la opción predeterminada
 const numberOfCards = localStorage.getItem('numberOfCards');
@@ -124,3 +147,7 @@ if(numberOfCards != null) {
   defaultOptionElement = document.querySelector(`#input-${numberOfCards}`);
   defaultOptionElement.setAttribute('checked', true);
 }
+
+
+
+

@@ -169,3 +169,34 @@
 .card.matched .back {
   display: none;
 }
+
+
+// Contador
+// .wrap{
+//   display:block;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.scoreboard {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 150px;
+
+  background-color: #30d9c4;
+  color: black;
+  border: solid 2px black;
+  padding: 10px;
+  border-radius: 10px;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.sb-title{
+  font-size:20px;
+}
+
+.sb-value{
+  font-size:25px;
+}
