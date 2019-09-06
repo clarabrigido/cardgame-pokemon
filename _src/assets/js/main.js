@@ -9,6 +9,7 @@ const counterElement = document.querySelector('.counter');
 let counter = 0;
 const timerElement = document.querySelector('.timer');
 let timer = 0;
+let timeCounter;
 
 // Media
 const audioSelected = document.querySelector('.audio-selected');
@@ -39,7 +40,9 @@ function handleSelectCardClick(event) {
       const matchedCardElementList = document.querySelectorAll('.matched');
       if(cardElementList.length === matchedCardElementList.length) {
         // Todas las parejas han sido encontradas.
+        clearInterval(timeCounter);
         audioVictory.play();
+
       } else {
         // Nueva pareja encontrada.
         audioMatched.play();
@@ -74,7 +77,7 @@ function handleUnselectCardClick(event) {
 
 function handleRetrieveCardClick(event){
 
-  window.setInterval(function(){
+  timeCounter = setInterval(function(){
     timer++;
     timerElement.innerHTML = timer;
   },1000);
@@ -135,7 +138,6 @@ function handleRetrieveCardClick(event){
     });
 }
 startBtnElement.addEventListener('click', handleRetrieveCardClick);
-
 
 
 // Marcar la opción predeterminada
